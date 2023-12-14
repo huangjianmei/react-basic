@@ -1,0 +1,33 @@
+.list-item{
+  display: flex;
+  margin-bottom: 20px;
+}
+.item-avatar{
+  width:60px
+}
+.user-info{
+  margin-bottom: 10px;
+}
+span{
+  font-size: 14px;
+  line-height: 24px;
+  padding-right:20px
+}
+.order-box{
+  font-size: 14px;
+  color:#666
+}
+ul{
+  list-style: none;
+}
+.nac-item{
+  color:#666;
+  padding:0px 20px;
+}
+.nac-item:first-child{
+  border-right:1px solid #ccc;
+
+}
+.active{
+  color:#000
+}
