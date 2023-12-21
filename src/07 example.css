@@ -1,3 +1,7 @@
+
+.df{
+  display: flex;
+}
 .list-item{
   display: flex;
   margin-bottom: 20px;
@@ -30,4 +34,10 @@ ul{
 }
 .active{
   color:#000
+}
+
+.publish-Box input{
+  width:80%;
+  min-height: 60px;
+  margin-right:30px
 }
