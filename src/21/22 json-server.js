@@ -1,6 +1,9 @@
-import "../01/07 example.css"
-import {useState} from "react"
+import "./01/07 example.css"
+import {useState,useRef,useEffect} from "react"
 import _ from "lodash"
+import {v4 as uuidV4} from "uuid"
+import dayjs from "dayjs"
+import axios from "axios"
 const list=[
   {
     rpid:3,
@@ -51,7 +54,16 @@ const tab = [
   }
 ]
 function App() {
-  const [commentList,setCommentList] = useState(_.orderBy(list,'like','desc'))
+  // const [commentList,setCommentList] = useState(_.orderBy(list,'like','desc'))
+  const [commentList,setCommentList] = useState([])
+
+  useEffect(()=>{
+    async function getList(){
+      const res=await axios.get("http://localhost:3004/list")
+      setCommentList(res.data)
+    }
+    getList()
+  },[])
   const handleDel=(id)=>{
     console.log(id)
     setCommentList(commentList.filter(item=>item.rpid!==id))
@@ -66,8 +78,49 @@ function App() {
     }else{
       setCommentList(_.orderBy(commentList,'ctime',"desc"))
     }
-
   }
+
+  const contentRef=useRef(null)
+  const [content,setContent] = useState("")
+  const handlePublish=()=>{
+    if(type==='hot'){
+      setCommentList(_.orderBy([
+        ...commentList,
+        {
+          rpid:uuidV4(),
+          user:{
+            uid:"7878998",
+            avatar:"../public/1.jpeg",
+            uname:"许嵩"
+          },
+          content:content,
+          ctime:dayjs(new Date()).format('MM-DD hh:mm'),
+          like:0
+        },
+        
+      ],'like',"desc"))
+    }else{
+      setCommentList(_.orderBy([
+        ...commentList,
+        {
+          rpid:uuidV4(),
+          user:{
+            uid:"7878998",
+            avatar:"../public/1.jpeg",
+            uname:"许嵩"
+          },
+          content:content,
+          ctime:dayjs(new Date()).format('MM-DD hh:mm'),
+          like:0
+        },
+        
+      ],'ctime',"desc"))
+    }
+    setContent("")
+    contentRef.current.focus();
+    
+  }
+
   return (
     <div className="App">
       <div className="tab-box">
@@ -80,11 +133,20 @@ function App() {
         </ul>
       </div>
       <div className="comment-list">
+        <div className="publish-Box df">
+          <textarea 
+            ref={contentRef} 
+            value={content} 
+            onChange={(e)=>setContent(e.target.value)}
+            placeholder="发布一条友善的评论"
+            type="text"/>
+          <button onClick={handlePublish}>发布</button>
+        </div>
         {
           commentList.map(item=>(
             <div key={item.rpid} className="list-item"> 
               <div className="item-avatar">
-                <img className="item-avatar-img" src={item.user.avatar}/>
+                <img className="item-avatar-img" src={item.user.avatar} alt=""/>
               </div>
               <div className="item-content">
                 <div className="user-info">

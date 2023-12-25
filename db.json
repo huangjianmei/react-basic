@@ -1,0 +1,37 @@
+{
+  "list":[
+    {
+      "rpid":3,
+      "user":{
+        "uid":"123123",
+        "avatar":"../public/1.jpeg",
+        "uname":"周杰伦"
+      },
+      "content":"'哎呦，不错哦'",
+      "ctime":"10-18 08:45",
+      "like":188
+    },
+    {
+      "rpid":2,
+      "user":{
+        "uid":"7878998",
+        "avatar":"../public/1.jpeg",
+        "uname":"许嵩"
+      },
+      "content":"我寻你千百度 日出到迟暮",
+      "ctime":"12-18 13:45",
+      "like":60
+    },
+    {
+      "rpid":4,
+      "user":{
+        "uid":"343434",
+        "avatar":"../public/1.jpeg",
+        "uname":"周深"
+      },
+      "content":"我是周星星",
+      "ctime":"11-18 13:45",
+      "like":100
+    }
+  ]
+}
