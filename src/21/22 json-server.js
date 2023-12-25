@@ -53,8 +53,8 @@ const tab = [
     text:"最新"
   }
 ]
-function App() {
-  // const [commentList,setCommentList] = useState(_.orderBy(list,'like','desc'))
+
+function useGetList(){
   const [commentList,setCommentList] = useState([])
 
   useEffect(()=>{
@@ -64,6 +64,15 @@ function App() {
     }
     getList()
   },[])
+  return{
+    commentList,
+    setCommentList
+  }
+}
+
+function App() {
+  // const [commentList,setCommentList] = useState(_.orderBy(list,'like','desc'))
+  const {commentList,setCommentList} = useGetList()
   const handleDel=(id)=>{
     console.log(id)
     setCommentList(commentList.filter(item=>item.rpid!==id))
