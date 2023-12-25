@@ -70,6 +70,29 @@ function useGetList(){
   }
 }
 
+function Item({item,onDel}){
+  return (
+    <div className="list-item"> 
+      <div className="item-avatar">
+        <img className="item-avatar-img" src={item.user.avatar} alt=""/>
+      </div>
+      <div className="item-content">
+        <div className="user-info">
+          <div className="user-name">{item.user.uname}</div>
+        </div>
+        <div className="content-box">
+          <span className="content-info">{item.content}</span>
+          <div className="order-box">
+            <span className="time-box">{item.ctime}</span>
+            <span className="like-box">点赞数：{item.like}</span>
+            {item.user.uid===user.uid&&<span className="del-btn" onClick={()=>onDel(item.rpid)}>删除</span>}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function App() {
   // const [commentList,setCommentList] = useState(_.orderBy(list,'like','desc'))
   const {commentList,setCommentList} = useGetList()
@@ -153,24 +176,7 @@ function App() {
         </div>
         {
           commentList.map(item=>(
-            <div key={item.rpid} className="list-item"> 
-              <div className="item-avatar">
-                <img className="item-avatar-img" src={item.user.avatar} alt=""/>
-              </div>
-              <div className="item-content">
-                <div className="user-info">
-                  <div className="user-name">{item.user.uname}</div>
-                </div>
-                <div className="content-box">
-                  <span className="content-info">{item.content}</span>
-                  <div className="order-box">
-                    <span className="time-box">{item.ctime}</span>
-                    <span className="like-box">点赞数：{item.like}</span>
-                    {item.user.uid===user.uid&&<span className="del-btn" onClick={()=>handleDel(item.rpid)}>删除</span>}
-                  </div>
-                </div>
-              </div>
-            </div>
+            <Item key={item.rpid} item={item} OnDel={handleDel}></Item>
           ))
         }
       </div>
