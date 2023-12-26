@@ -22,6 +22,6 @@ const counterStore=createSlice({
 
 // 解构出来actionCreater函数
 const {inscrement,decrement,addToNum} = counterStore.actions
-const reduer = counterStore.reducer
+const reducer = counterStore.reducer
 export {inscrement,decrement,addToNum}
-export default reduer
+export default reducer
