@@ -7,7 +7,7 @@ const store = configureStore({
   reducer:{
     counter:counterReducer,
     channel:channelReducer,
-    food:foodReducer
+    foods:foodReducer
   }
 })
 

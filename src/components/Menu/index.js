@@ -5,7 +5,7 @@ import {useEffect} from "react"
 import {useDispatch,useSelector} from "react-redux"
 
 const Menu = () => {
-  const {foodsList,activeIndex}=useSelector(state=>state.food)
+  const {foodsList,activeIndex}=useSelector(state=>state.foods)
   const dispatch=useDispatch()
   useEffect(()=>{
     dispatch(fetchFoods())

@@ -10,7 +10,7 @@ import './App.scss'
 
 
 const App = () => {
-  const {foodsList,activeIndex}=useSelector(state=>state.food)
+  const {foodsList,activeIndex}=useSelector(state=>state.foods)
   const dispatch=useDispatch()
   useEffect(()=>{
     dispatch(fetchFoods())
