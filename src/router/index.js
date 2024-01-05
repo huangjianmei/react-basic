@@ -1,15 +1,14 @@
-import {createHashRouter} from "react-router-dom"
+import {createBrowserRouter} from "react-router-dom"
 import Login from "../page/login"
 import Article from "../page/article"
 import Layout from "../page/layout"
-import Board from "../page/board"
 import About from "../page/about"
 import NotFound from "../page/notFound"
 import Month from "@/page/month"
 import New from "@/page/new"
 import Year from "@/page/year"
 
-const router = createHashRouter([
+const router = createBrowserRouter([
   {
     path:'/',
     element:<Layout/>,
