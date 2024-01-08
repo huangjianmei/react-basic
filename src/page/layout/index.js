@@ -34,7 +34,6 @@ const Layout=()=>{
   },[dispatch])
   const navigator=useNavigate()
   const switchTabBar=(path)=>{
-    console.log(path)
     navigator(path)
   }
   return (
